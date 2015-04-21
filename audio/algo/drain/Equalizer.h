@@ -72,7 +72,7 @@ namespace audio {
 					// for debug & tools only
 					std::vector<std::pair<float,float> > calculateTheory();
 				protected:
-					std11::unique_ptr<EqualizerPrivate> m_private; //!< private data (abstract the type of the data flow).
+					std11::shared_ptr<EqualizerPrivate> m_private; //!< private data (abstract the type of the data flow).
 			};
 		}
 	}

@@ -174,122 +174,102 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 			break;
 		case audio::format_double:
 			{
-				std11::unique_ptr<EqualizerPrivateType<audio::double_t> > value(new EqualizerPrivateType<audio::double_t>());
-				if (value == nullptr) {
+				m_private = std11::make_shared<EqualizerPrivateType<audio::double_t> >();
+				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
-				value->init(_sampleRate, _nbChannel);
-				// net value:
-				m_private = std11::move(value);
+				m_private->init(_sampleRate, _nbChannel);
 			}
 			break;
 		case audio::format_float:
 			{
-				std11::unique_ptr<EqualizerPrivateType<audio::float_t> > value(new EqualizerPrivateType<audio::float_t>());
-				if (value == nullptr) {
+				m_private = std11::make_shared<EqualizerPrivateType<audio::float_t> >();
+				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
-				value->init(_sampleRate, _nbChannel);
-				// net value:
-				m_private = std11::move(value);
+				m_private->init(_sampleRate, _nbChannel);
 			}
 			break;
 		case audio::format_int8:
 			{
-				std11::unique_ptr<EqualizerPrivateType<audio::int8_8_t> > value(new EqualizerPrivateType<audio::int8_8_t>());
-				if (value == nullptr) {
+				m_private = std11::make_shared<EqualizerPrivateType<audio::int8_8_t> >();
+				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
-				value->init(_sampleRate, _nbChannel);
-				// net value:
-				m_private = std11::move(value);
+				m_private->init(_sampleRate, _nbChannel);
 			}
 			break;
 		case audio::format_int8_on_int16:
 			{
-				std11::unique_ptr<EqualizerPrivateType<audio::int8_16_t> > value(new EqualizerPrivateType<audio::int8_16_t>());
-				if (value == nullptr) {
+				m_private = std11::make_shared<EqualizerPrivateType<audio::int8_16_t> >();
+				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
-				value->init(_sampleRate, _nbChannel);
-				// net value:
-				m_private = std11::move(value);
+				m_private->init(_sampleRate, _nbChannel);
 			}
 			break;
 		case audio::format_int16:
 			{
-				std11::unique_ptr<EqualizerPrivateType<audio::int16_16_t> > value(new EqualizerPrivateType<audio::int16_16_t>());
-				if (value == nullptr) {
+				m_private = std11::make_shared<EqualizerPrivateType<audio::int16_16_t> >();
+				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
-				value->init(_sampleRate, _nbChannel);
-				// net value:
-				m_private = std11::move(value);
+				m_private->init(_sampleRate, _nbChannel);
 			}
 			break;
 		case audio::format_int16_on_int32:
 			{
-				std11::unique_ptr<EqualizerPrivateType<audio::int16_32_t> > value(new EqualizerPrivateType<audio::int16_32_t>());
-				if (value == nullptr) {
+				m_private = std11::make_shared<EqualizerPrivateType<audio::int16_32_t> >();
+				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
-				value->init(_sampleRate, _nbChannel);
-				// net value:
-				m_private = std11::move(value);
+				m_private->init(_sampleRate, _nbChannel);
 			}
 			break;
 		case audio::format_int24_on_int32:
 			{
-				std11::unique_ptr<EqualizerPrivateType<audio::int24_32_t> > value(new EqualizerPrivateType<audio::int24_32_t>());
-				if (value == nullptr) {
+				m_private = std11::make_shared<EqualizerPrivateType<audio::int24_32_t> >();
+				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
-				value->init(_sampleRate, _nbChannel);
-				// net value:
-				m_private = std11::move(value);
+				m_private->init(_sampleRate, _nbChannel);
 			}
 			break;
 		case audio::format_int32:
 			{
-				std11::unique_ptr<EqualizerPrivateType<audio::int32_32_t> > value(new EqualizerPrivateType<audio::int32_32_t>());
-				if (value == nullptr) {
+				m_private = std11::make_shared<EqualizerPrivateType<audio::int32_32_t> >();
+				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
-				value->init(_sampleRate, _nbChannel);
-				// net value:
-				m_private = std11::move(value);
+				m_private->init(_sampleRate, _nbChannel);
 			}
 			break;
 		case audio::format_int32_on_int64:
 			{
-				std11::unique_ptr<EqualizerPrivateType<audio::int32_64_t> > value(new EqualizerPrivateType<audio::int32_64_t>());
-				if (value == nullptr) {
+				m_private = std11::make_shared<EqualizerPrivateType<audio::int32_64_t> >();
+				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
-				value->init(_sampleRate, _nbChannel);
-				// net value:
-				m_private = std11::move(value);
+				m_private->init(_sampleRate, _nbChannel);
 			}
 			break;
 		case audio::format_int64:
 			{
-				std11::unique_ptr<EqualizerPrivateType<audio::int32_64_t> > value(new EqualizerPrivateType<audio::int32_64_t>());
-				if (value == nullptr) {
+				m_private = std11::make_shared<EqualizerPrivateType<audio::int32_64_t> >();
+				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
-				value->init(_sampleRate, _nbChannel);
-				// net value:
-				m_private = std11::move(value);
+				m_private->init(_sampleRate, _nbChannel);
 			}
 			break;
 	}
