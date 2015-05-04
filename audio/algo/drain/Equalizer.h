@@ -29,6 +29,10 @@ namespace audio {
 					virtual ~Equalizer();
 				public:
 					/**
+					 * @brief Reset all history of the Algo.
+					 */
+					void reset();
+					/**
 					 * @brief Initialize the Algorithm
 					 * @param[in] _sampleRate Sample rate of the stream.
 					 * @param[in] _nbChannel Number of channel in the stream.

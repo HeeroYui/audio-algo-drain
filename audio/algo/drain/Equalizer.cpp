@@ -37,6 +37,10 @@ namespace audio {
 					}
 				public:
 					/**
+					 * @brief Reset all history of the Algo.
+					 */
+					virtual void reset() = 0;
+					/**
 					 * @brief Initialize the Algorithm
 					 * @param[in] _sampleRate Sample rate of the stream.
 					 * @param[in] _nbChannel Number of channel in the stream.
@@ -87,6 +91,13 @@ namespace audio {
 					 */
 					virtual ~EqualizerPrivateType() {
 						
+					}
+					virtual void reset() {
+						for (size_t jjj=0; jjj<m_biquads.size(); ++jjj) {
+							for (size_t iii=0; iii<m_biquads[jjj].size(); ++iii) {
+								m_biquads[jjj][iii].reset();
+							}
+						}
 					}
 					virtual void init(float _sampleRate=48000, int8_t _nbChannel=2) {
 						audio::algo::drain::EqualizerPrivate::init(_sampleRate, _nbChannel);
@@ -273,6 +284,13 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 			}
 			break;
 	}
+}
+void audio::algo::drain::Equalizer::reset() {
+	if (m_private == nullptr) {
+		AA_DRAIN_ERROR("Equalizer does not init ...");
+		return;
+	}
+	m_private->reset();
 }
 
 std::vector<enum audio::format> audio::algo::drain::Equalizer::getSupportedFormat() {
