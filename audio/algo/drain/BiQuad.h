@@ -7,9 +7,17 @@
 #ifndef __AUDIO_ALGO_DRAIN_ALGO_BIQUAD_H__
 #define __AUDIO_ALGO_DRAIN_ALGO_BIQUAD_H__
 
+
 #include <etk/memory.h>
+#include <etk/types.h>
 #include <audio/algo/drain/BiQuadType.h>
 #include <cmath>
+#ifndef M_LN10
+	#define M_LN10 2.30258509299404568402
+#endif
+#ifndef M_SQRT2
+	#define M_SQRT2 1.41421356237309504880
+#endif
 
 namespace audio {
 	namespace algo {
