@@ -8,7 +8,7 @@
 #define __AUDIO_ALGO_DRAIN_ALGO_BIQUAD_H__
 
 
-#include <etk/memory.h>
+#include <memory>
 #include <etk/types.h>
 #include <audio/algo/drain/BiQuadType.h>
 #include <cmath>

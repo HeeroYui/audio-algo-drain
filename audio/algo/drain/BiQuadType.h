@@ -7,7 +7,7 @@
 #ifndef __AUDIO_ALGO_DRAIN_ALGO_BIQUAD_TYPE_H__
 #define __AUDIO_ALGO_DRAIN_ALGO_BIQUAD_TYPE_H__
 
-#include <etk/memory.h>
+#include <memory>
 
 namespace audio {
 	namespace algo {

@@ -8,7 +8,7 @@
 #define __AUDIO_ALGO_DRAIN_ALGO_EQUALIZER_H__
 
 #include <etk/types.h>
-#include <etk/memory.h>
+#include <memory>
 #include <vector>
 #include <audio/format.h>
 #include <audio/algo/drain/BiQuadType.h>
