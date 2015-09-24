@@ -12,25 +12,25 @@ def get_licence():
 
 
 def create(target):
-	myModule = module.Module(__file__, 'audio-algo-drain', 'LIBRARY')
-	myModule.add_src_file([
+	my_module = module.Module(__file__, 'audio-algo-drain', 'LIBRARY')
+	my_module.add_src_file([
 		'audio/algo/drain/debug.cpp',
 		'audio/algo/drain/BiQuad.cpp',
 		'audio/algo/drain/BiQuadType.cpp',
 		'audio/algo/drain/Equalizer.cpp'
 		])
-	myModule.add_header_file([
+	my_module.add_header_file([
 		'audio/algo/drain/BiQuad.h',
 		'audio/algo/drain/BiQuadType.h',
 		'audio/algo/drain/Equalizer.h'
 		])
-	myModule.add_module_depend(['etk', 'audio'])
+	my_module.add_module_depend(['etk', 'audio'])
 	
-	myModule.add_export_path(tools.get_current_path(__file__))
+	my_module.add_export_path(tools.get_current_path(__file__))
 	
-	#myModule.set_licence(module.APACHE_2)
+	#my_module.set_licence(module.APACHE_2)
 	
-	return myModule
+	return my_module
 
 
 
