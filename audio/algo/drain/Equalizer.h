@@ -3,9 +3,7 @@
  * @copyright 2011, Edouard DUPIN, all right reserved
  * @license APACHE v2.0 (see license file)
  */
-
-#ifndef __AUDIO_ALGO_DRAIN_ALGO_EQUALIZER_H__
-#define __AUDIO_ALGO_DRAIN_ALGO_EQUALIZER_H__
+#pragma once
 
 #include <etk/types.h>
 #include <memory>
@@ -82,4 +80,3 @@ namespace audio {
 	}
 }
 
-#endif
