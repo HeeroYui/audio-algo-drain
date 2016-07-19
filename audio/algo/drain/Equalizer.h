@@ -6,7 +6,7 @@
 #pragma once
 
 #include <etk/types.h>
-#include <memory>
+#include <ememory/memory.h>
 #include <vector>
 #include <audio/format.h>
 #include <audio/algo/drain/BiQuadType.h>
@@ -74,7 +74,7 @@ namespace audio {
 					// for debug & tools only
 					std::vector<std::pair<float,float> > calculateTheory();
 				protected:
-					std::shared_ptr<EqualizerPrivate> m_private; //!< private data (abstract the type of the data flow).
+					ememory::SharedPtr<EqualizerPrivate> m_private; //!< private data (abstract the type of the data flow).
 			};
 		}
 	}

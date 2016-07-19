@@ -185,7 +185,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 			break;
 		case audio::format_double:
 			{
-				m_private = std::make_shared<EqualizerPrivateType<audio::double_t> >();
+				m_private = ememory::makeShared<EqualizerPrivateType<audio::double_t> >();
 				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
@@ -195,7 +195,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 			break;
 		case audio::format_float:
 			{
-				m_private = std::make_shared<EqualizerPrivateType<audio::float_t> >();
+				m_private = ememory::makeShared<EqualizerPrivateType<audio::float_t> >();
 				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
@@ -205,7 +205,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 			break;
 		case audio::format_int8:
 			{
-				m_private = std::make_shared<EqualizerPrivateType<audio::int8_8_t> >();
+				m_private = ememory::makeShared<EqualizerPrivateType<audio::int8_8_t> >();
 				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
@@ -215,7 +215,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 			break;
 		case audio::format_int8_on_int16:
 			{
-				m_private = std::make_shared<EqualizerPrivateType<audio::int8_16_t> >();
+				m_private = ememory::makeShared<EqualizerPrivateType<audio::int8_16_t> >();
 				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
@@ -225,7 +225,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 			break;
 		case audio::format_int16:
 			{
-				m_private = std::make_shared<EqualizerPrivateType<audio::int16_16_t> >();
+				m_private = ememory::makeShared<EqualizerPrivateType<audio::int16_16_t> >();
 				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
@@ -235,7 +235,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 			break;
 		case audio::format_int16_on_int32:
 			{
-				m_private = std::make_shared<EqualizerPrivateType<audio::int16_32_t> >();
+				m_private = ememory::makeShared<EqualizerPrivateType<audio::int16_32_t> >();
 				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
@@ -245,7 +245,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 			break;
 		case audio::format_int24_on_int32:
 			{
-				m_private = std::make_shared<EqualizerPrivateType<audio::int24_32_t> >();
+				m_private = ememory::makeShared<EqualizerPrivateType<audio::int24_32_t> >();
 				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
@@ -255,7 +255,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 			break;
 		case audio::format_int32:
 			{
-				m_private = std::make_shared<EqualizerPrivateType<audio::int32_32_t> >();
+				m_private = ememory::makeShared<EqualizerPrivateType<audio::int32_32_t> >();
 				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
@@ -265,7 +265,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 			break;
 		case audio::format_int32_on_int64:
 			{
-				m_private = std::make_shared<EqualizerPrivateType<audio::int32_64_t> >();
+				m_private = ememory::makeShared<EqualizerPrivateType<audio::int32_64_t> >();
 				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
@@ -275,7 +275,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 			break;
 		case audio::format_int64:
 			{
-				m_private = std::make_shared<EqualizerPrivateType<audio::int32_64_t> >();
+				m_private = ememory::makeShared<EqualizerPrivateType<audio::int32_64_t> >();
 				if (m_private == nullptr) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;

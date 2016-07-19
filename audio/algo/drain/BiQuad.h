@@ -5,7 +5,7 @@
  */
 #pragma once
 
-#include <memory>
+#include <ememory/memory.h>
 #include <etk/types.h>
 #include <audio/algo/drain/BiQuadType.h>
 #include <cmath>
