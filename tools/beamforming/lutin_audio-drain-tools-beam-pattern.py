@@ -31,6 +31,6 @@ def create(target, module_name):
 		'beamPattern.cpp'
 		])
 	my_module.compile_version("c++", 2011)
-	my_module.add_module_depend(['m', 'etk', 'test-debug'])
+	my_module.add_depend(['m', 'etk', 'test-debug'])
 	return my_module
 
