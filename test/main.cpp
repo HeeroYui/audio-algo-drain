@@ -4,10 +4,10 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <test-debug/debug.h>
-#include <etk/etk.h>
-#include <audio/algo/drain/Equalizer.h>
-#include <etk/os/FSNode.h>
+#include <test-debug/debug.hpp>
+#include <etk/etk.hpp>
+#include <audio/algo/drain/Equalizer.hpp>
+#include <etk/os/FSNode.hpp>
 #include <chrono>
 
 #include <unistd.h>

@@ -5,9 +5,9 @@
  */
 #pragma once
 
-#include <ememory/memory.h>
-#include <etk/types.h>
-#include <audio/algo/drain/BiQuadType.h>
+#include <ememory/memory.hpp>
+#include <etk/types.hpp>
+#include <audio/algo/drain/BiQuadType.hpp>
 #include <cmath>
 #ifndef M_LN10
 	#define M_LN10 2.30258509299404568402

@@ -35,9 +35,9 @@ def create(target, module_name):
 		'audio/algo/drain/Equalizer.cpp'
 		])
 	my_module.add_header_file([
-		'audio/algo/drain/BiQuad.h',
-		'audio/algo/drain/BiQuadType.h',
-		'audio/algo/drain/Equalizer.h'
+		'audio/algo/drain/BiQuad.hpp',
+		'audio/algo/drain/BiQuadType.hpp',
+		'audio/algo/drain/Equalizer.hpp'
 		])
 	my_module.add_depend(['etk', 'audio'])
 	my_module.add_path(tools.get_current_path(__file__))

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <math.h>
+#include <cmath>
 #include <stdint.h>
 // http://www.labbookpages.co.uk/audio/beamforming/delaySum.html
 // Number of angle points to calculate
@@ -7,10 +7,10 @@
 //#define ANGLE_RESOLUTION 32
 
 #include <etk/etk.h>
-#include <test-debug/debug.h>
-#include <etk/os/FSNode.h>
-#include <etk/math/Vector3D.h>
-#include <etk/math/Matrix4.h>
+#include <test-debug/debug.hpp>
+#include <etk/os/FSNode.hpp>
+#include <etk/math/Vector3D.hpp>
+#include <etk/math/Matrix4.hpp>
 
 const double speedSound = 340.29; // m/s
 

@@ -4,9 +4,9 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <etk/types.h>
-#include <audio/algo/drain/debug.h>
-#include <audio/algo/drain/BiQuadType.h>
+#include <etk/types.hpp>
+#include <audio/algo/drain/debug.hpp>
+#include <audio/algo/drain/BiQuadType.hpp>
 
 static const char* listValues[] = {
 	"none",

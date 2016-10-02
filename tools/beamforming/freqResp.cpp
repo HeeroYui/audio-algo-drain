@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <math.h>
+#include <cmath>
 #include <stdint.h>
 // http://www.labbookpages.co.uk/audio/beamforming/delaySum.html
 
@@ -12,11 +12,11 @@
 // gnuplot
 // gnuplot> call 'freqResp.gnuplot'
 
-#include <etk/etk.h>
-#include <test-debug/debug.h>
-#include <etk/os/FSNode.h>
-#include <etk/math/Vector3D.h>
-#include <etk/math/Matrix4.h>
+#include <etk/etk.hpp>
+#include <test-debug/debug.hpp>
+#include <etk/os/FSNode.hpp>
+#include <etk/math/Vector3D.hpp>
+#include <etk/math/Matrix4.hpp>
 
 const double speedSound = 340.29; // m/s
 

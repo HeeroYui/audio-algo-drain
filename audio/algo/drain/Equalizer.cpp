@@ -4,10 +4,10 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <audio/algo/drain/Equalizer.h>
-#include <audio/algo/drain/debug.h>
-#include <audio/algo/drain/BiQuad.h>
-#include <audio/types.h>
+#include <audio/algo/drain/Equalizer.hpp>
+#include <audio/algo/drain/debug.hpp>
+#include <audio/algo/drain/BiQuad.hpp>
+#include <audio/types.hpp>
 
 
 // see http://www.musicdsp.org/files/Audio-EQ-Cookbook.txt

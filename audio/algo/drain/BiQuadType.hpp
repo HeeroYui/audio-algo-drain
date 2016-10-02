@@ -5,7 +5,7 @@
  */
 #pragma once
 
-#include <ememory/memory.h>
+#include <ememory/memory.hpp>
 
 namespace audio {
 	namespace algo {

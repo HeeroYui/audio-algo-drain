@@ -5,11 +5,11 @@
  */
 #pragma once
 
-#include <etk/types.h>
-#include <ememory/memory.h>
+#include <etk/types.hpp>
+#include <ememory/memory.hpp>
 #include <vector>
-#include <audio/format.h>
-#include <audio/algo/drain/BiQuadType.h>
+#include <audio/format.hpp>
+#include <audio/algo/drain/BiQuadType.hpp>
 
 namespace audio {
 	namespace algo {
