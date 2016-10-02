@@ -1,6 +1,6 @@
-#include <stdio.h>
+#include <cstdio>
 #include <cmath>
-#include <stdint.h>
+#include <cstdint>
 // http://www.labbookpages.co.uk/audio/beamforming/delaySum.html
 
 // Number of freq points to calculate

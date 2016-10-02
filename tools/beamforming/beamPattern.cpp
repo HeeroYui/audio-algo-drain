@@ -1,12 +1,12 @@
-#include <stdio.h>
+#include <cstdio>
 #include <cmath>
-#include <stdint.h>
+#include <cstdint>
 // http://www.labbookpages.co.uk/audio/beamforming/delaySum.html
 // Number of angle points to calculate
 #define ANGLE_RESOLUTION 100000
 //#define ANGLE_RESOLUTION 32
 
-#include <etk/etk.h>
+#include <etk/etk.hpp>
 #include <test-debug/debug.hpp>
 #include <etk/os/FSNode.hpp>
 #include <etk/math/Vector3D.hpp>
