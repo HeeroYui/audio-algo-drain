@@ -1,7 +1,6 @@
 #!/usr/bin/python
-import lutin.module as module
+import lutin.debug as debug
 import lutin.tools as tools
-import datetime
 
 
 def get_type():
@@ -25,11 +24,14 @@ def get_compagny_name():
 def get_maintainer():
 	return ["Mr DUPIN Edouard <yui.heero@gmail.com>"]
 
-def create(target, module_name):
-	my_module = module.Module(__file__, module_name, get_type())
+def configure(target, my_module):
 	my_module.add_src_file([
-		'freqResp.cpp'
-		])
+	    'freqResp.cpp'
+	    ])
 	my_module.compile_version("c++", 2011)
-	my_module.add_depend(['m', 'etk', 'test-debug'])
-	return my_module
+	my_module.add_depend([
+	    'm',
+	    'etk',
+	    'test-debug'
+	    ])
+	return True

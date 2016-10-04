@@ -1,7 +1,6 @@
 #!/usr/bin/python
-import lutin.module as module
-import lutin.tools as tools
 import lutin.debug as debug
+import lutin.tools as tools
 
 
 def get_type():
@@ -26,22 +25,24 @@ def get_maintainer():
 def get_version():
 	return "version.txt"
 
-def create(target, module_name):
-	my_module = module.Module(__file__, module_name, get_type())
+def configure(target, my_module):
 	my_module.add_src_file([
-		'audio/algo/drain/debug.cpp',
-		'audio/algo/drain/BiQuad.cpp',
-		'audio/algo/drain/BiQuadType.cpp',
-		'audio/algo/drain/Equalizer.cpp'
-		])
+	    'audio/algo/drain/debug.cpp',
+	    'audio/algo/drain/BiQuad.cpp',
+	    'audio/algo/drain/BiQuadType.cpp',
+	    'audio/algo/drain/Equalizer.cpp'
+	    ])
 	my_module.add_header_file([
-		'audio/algo/drain/BiQuad.hpp',
-		'audio/algo/drain/BiQuadType.hpp',
-		'audio/algo/drain/Equalizer.hpp'
-		])
-	my_module.add_depend(['etk', 'audio'])
-	my_module.add_path(tools.get_current_path(__file__))
-	return my_module
+	    'audio/algo/drain/BiQuad.hpp',
+	    'audio/algo/drain/BiQuadType.hpp',
+	    'audio/algo/drain/Equalizer.hpp'
+	    ])
+	my_module.add_depend([
+	    'etk',
+	    'audio'
+	    ])
+	my_module.add_path(".")
+	return True
 
 
 
