@@ -9,8 +9,9 @@
 #include <audio/algo/drain/Equalizer.hpp>
 #include <etk/os/FSNode.hpp>
 #include <chrono>
+#include <thread>
 
-#include <unistd.h>
+
 
 class Performance {
 	private:
@@ -86,7 +87,7 @@ float performanceEqualizerType(audio::format _type) {
 		size_t sizeOut = output.size();
 		algo.process(&output[0], &input[0], input.size());
 		perfo.toc();
-		usleep(1000);
+		std::this_thread::sleep_for(std::chrono::milliseconds(1));
 	}
 	TEST_INFO("    blockSize=" << input.size() << " sample");
 	TEST_INFO("    min < avg < max =" << perfo.getMinProcessing().count() << "ns < "
@@ -202,7 +203,7 @@ int main(int _argc, const char** _argv) {
 			algo.process(&output[outputPosition], availlableSize, &inputData[iii*blockSize], blockSize, audio::format_int16);
 			if (perf == true) {
 				perfo.toc();
-				usleep(1000);
+				std::this_thread::sleep_for(std::chrono::milliseconds(1));
 			}
 			outputPosition += availlableSize*nbChan;
 		}
