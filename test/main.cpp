@@ -35,8 +35,8 @@ class Performance {
 		void toc() {
 			m_timeStop = std::chrono::steady_clock::now();
 			std::chrono::nanoseconds time = m_timeStop - m_timeStart;
-			m_minProcessing = std::min(m_minProcessing, time);
-			m_maxProcessing = std::max(m_maxProcessing, time);
+			m_minProcessing = etk::min(m_minProcessing, time);
+			m_maxProcessing = etk::max(m_maxProcessing, time);
 			m_totalTimeProcessing += time;
 			m_totalIteration++;
 			
@@ -58,9 +58,9 @@ class Performance {
 };
 
 float performanceEqualizerType(audio::format _type) {
-	std::vector<float> input;
+	etk::Vector<float> input;
 	input.resize(1024, 0);
-	std::vector<float> output;
+	etk::Vector<float> output;
 	output.resize(input.size()*10, 0);
 	double sampleRate = 48000;
 	{
@@ -116,17 +116,17 @@ void performanceEqualizer() {
 int main(int _argc, const char** _argv) {
 	// the only one init for etk:
 	etk::init(_argc, _argv);
-	std::string inputName = "";
-	std::string outputName = "output.raw";
+	etk::String inputName = "";
+	etk::String outputName = "output.raw";
 	bool performance = false;
 	bool perf = false;
 	int64_t sampleRateIn = 48000;
 	int64_t sampleRateOut = 48000;
 	int32_t nbChan = 1;
 	int32_t quality = 4;
-	std::string test = "";
+	etk::String test = "";
 	for (int32_t iii=0; iii<_argc ; ++iii) {
-		std::string data = _argv[iii];
+		etk::String data = _argv[iii];
 		if (etk::start_with(data,"--in=")) {
 			inputName = &data[5];
 		} else if (etk::start_with(data,"--out=")) {
@@ -178,10 +178,10 @@ int main(int _argc, const char** _argv) {
 			exit(-1);
 		}
 		TEST_INFO("Read input:");
-		std::vector<int16_t> inputData = etk::FSNodeReadAllDataType<int16_t>(inputName);
+		etk::Vector<int16_t> inputData = etk::FSNodeReadAllDataType<int16_t>(inputName);
 		TEST_INFO("    " << inputData.size() << " samples");
 		// resize output :
-		std::vector<int16_t> output;
+		etk::Vector<int16_t> output;
 		output.resize(inputData.size()*sampleRateOut/sampleRateIn+5000, 0);
 		// process in chunk of 256 samples
 		int32_t blockSize = 256*nbChan;

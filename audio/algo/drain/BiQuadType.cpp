@@ -22,10 +22,10 @@ static int32_t listValuesSize = sizeof(listValues)/sizeof(char*);
 
 
 namespace etk {
-	template<> std::string to_string<enum audio::algo::drain::biQuadType>(const enum audio::algo::drain::biQuadType& _variable) {
+	template<> etk::String toString<enum audio::algo::drain::biQuadType>(const enum audio::algo::drain::biQuadType& _variable) {
 		return listValues[_variable];
 	}
-	template <> bool from_string<enum audio::algo::drain::biQuadType>(enum audio::algo::drain::biQuadType& _variableRet, const std::string& _value) {
+	template <> bool from_string<enum audio::algo::drain::biQuadType>(enum audio::algo::drain::biQuadType& _variableRet, const etk::String& _value) {
 		for (int32_t iii=0; iii<listValuesSize; ++iii) {
 			if (_value == listValues[iii]) {
 				_variableRet = static_cast<enum audio::algo::drain::biQuadType>(iii);

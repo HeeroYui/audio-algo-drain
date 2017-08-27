@@ -182,13 +182,13 @@ namespace audio {
 					/**
 					 * @brief Get direct Coefficients
 					 */
-					std::vector<TYPE> getCoef() {
-						std::vector<TYPE> out;
-						out.push_back(m_a[0]);
-						out.push_back(m_a[1]);
-						out.push_back(m_a[2]);
-						out.push_back(m_b[0]);
-						out.push_back(m_b[1]);
+					etk::Vector<TYPE> getCoef() {
+						etk::Vector<TYPE> out;
+						out.pushBack(m_a[0]);
+						out.pushBack(m_a[1]);
+						out.pushBack(m_a[2]);
+						out.pushBack(m_b[0]);
+						out.pushBack(m_b[1]);
 						return out;
 					}
 					/**
@@ -249,8 +249,8 @@ namespace audio {
 					 * @param[in] _sampleRate input qample rate
 					 * @retrun list of frequency/power in dB
 					 */
-					std::vector<std::pair<float,float> > calculateTheory(double _sampleRate){
-						std::vector<std::pair<float,float> > out;
+					etk::Vector<etk::Pair<float,float> > calculateTheory(double _sampleRate){
+						etk::Vector<etk::Pair<float,float> > out;
 						double norm;
 						bool buildLinear = true;
 						size_t len = 512;
@@ -276,7 +276,7 @@ namespace audio {
 								y = -200.0;
 							}
 							//APPL_DEBUG("theory = " << freq << " power=" << y);
-							out.push_back(std::make_pair<float,float>(freq, y));
+							out.pushBack(etk::makePair<float,float>(freq, y));
 						}
 						return out;
 					}

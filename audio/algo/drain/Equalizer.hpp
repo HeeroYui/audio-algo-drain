@@ -7,7 +7,7 @@
 
 #include <etk/types.hpp>
 #include <ememory/memory.hpp>
-#include <vector>
+#include <etk/Vector.hpp>
 #include <audio/format.hpp>
 #include <audio/algo/drain/BiQuadType.hpp>
 
@@ -41,12 +41,12 @@ namespace audio {
 					 * @brief Get list of format suported in input.
 					 * @return list of supported format
 					 */
-					virtual std::vector<enum audio::format> getSupportedFormat();
+					virtual etk::Vector<enum audio::format> getSupportedFormat();
 					/**
 					 * @brief Get list of algorithm format suported. No format convertion.
 					 * @return list of supported format
 					 */
-					virtual std::vector<enum audio::format> getNativeSupportedFormat();
+					virtual etk::Vector<enum audio::format> getNativeSupportedFormat();
 					/**
 					 * @brief Main input algo process.
 					 * @param[in,out] _output Output data.
@@ -72,7 +72,7 @@ namespace audio {
 					bool addBiquad(int32_t _idChannel, audio::algo::drain::biQuadType _type, double _frequencyCut, double _qualityFactor, double _gain);
 				public:
 					// for debug & tools only
-					std::vector<std::pair<float,float> > calculateTheory();
+					etk::Vector<etk::Pair<float,float> > calculateTheory();
 				protected:
 					ememory::SharedPtr<EqualizerPrivate> m_private; //!< private data (abstract the type of the data flow).
 			};

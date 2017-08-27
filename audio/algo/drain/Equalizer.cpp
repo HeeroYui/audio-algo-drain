@@ -74,11 +74,11 @@ namespace audio {
 					virtual bool addBiquad(int32_t _idChannel, audio::algo::drain::biQuadType _type, double _frequencyCut, double _qualityFactor, double _gain) = 0;
 				public:
 					// for debug & tools only
-					virtual std::vector<std::pair<float,float> > calculateTheory() = 0;
+					virtual etk::Vector<etk::Pair<float,float> > calculateTheory() = 0;
 			};
 			template<typename TYPE> class EqualizerPrivateType : public audio::algo::drain::EqualizerPrivate {
 				protected:
-					std::vector<std::vector<audio::algo::drain::BiQuad<TYPE> > > m_biquads;
+					etk::Vector<etk::Vector<audio::algo::drain::BiQuad<TYPE> > > m_biquads;
 				public:
 					/**
 					 * @brief Constructor
@@ -122,7 +122,7 @@ namespace audio {
 						bq.setBiquadCoef(_a0, _a1, _a2, _b0, _b1);
 						// add this bequad for every Channel:
 						for (size_t iii=0; iii<m_biquads.size(); ++iii) {
-							m_biquads[iii].push_back(bq);
+							m_biquads[iii].pushBack(bq);
 						}
 						return true;
 					}
@@ -131,7 +131,7 @@ namespace audio {
 						bq.setBiquad(_type, _frequencyCut, _qualityFactor, _gain, m_sampleRate);
 						// add this bequad for every Channel:
 						for (size_t iii=0; iii<m_biquads.size(); ++iii) {
-							m_biquads[iii].push_back(bq);
+							m_biquads[iii].pushBack(bq);
 						}
 						return true;
 					}
@@ -139,7 +139,7 @@ namespace audio {
 						audio::algo::drain::BiQuad<TYPE> bq;
 						bq.setBiquadCoef(_a0, _a1, _a2, _b0, _b1);
 						if (_idChannel<m_biquads.size()) {
-							m_biquads[_idChannel].push_back(bq);
+							m_biquads[_idChannel].pushBack(bq);
 						}
 						return true;
 					}
@@ -147,17 +147,17 @@ namespace audio {
 						audio::algo::drain::BiQuad<TYPE> bq;
 						bq.setBiquad(_type, _frequencyCut, _qualityFactor, _gain, m_sampleRate);
 						if (_idChannel<m_biquads.size()) {
-							m_biquads[_idChannel].push_back(bq);
+							m_biquads[_idChannel].pushBack(bq);
 						}
 						return true;
 					}
-					virtual std::vector<std::pair<float,float> > calculateTheory() {
-						std::vector<std::pair<float,float> > out;
+					virtual etk::Vector<etk::Pair<float,float> > calculateTheory() {
+						etk::Vector<etk::Pair<float,float> > out;
 						for (size_t iii=0; iii<m_biquads[0].size(); ++iii) {
 							if (iii == 0) {
 								out = m_biquads[0][iii].calculateTheory(m_sampleRate);
 							} else {
-								std::vector<std::pair<float,float> > tmp = m_biquads[0][iii].calculateTheory(m_sampleRate);
+								etk::Vector<etk::Pair<float,float> > tmp = m_biquads[0][iii].calculateTheory(m_sampleRate);
 								for (size_t jjj=0; jjj< out.size(); ++jjj) {
 									out[jjj].second += tmp[jjj].second;
 								}
@@ -293,15 +293,15 @@ void audio::algo::drain::Equalizer::reset() {
 	m_private->reset();
 }
 
-std::vector<enum audio::format> audio::algo::drain::Equalizer::getSupportedFormat() {
-	std::vector<enum audio::format> out = audio::algo::drain::Equalizer::getNativeSupportedFormat();
+etk::Vector<enum audio::format> audio::algo::drain::Equalizer::getSupportedFormat() {
+	etk::Vector<enum audio::format> out = audio::algo::drain::Equalizer::getNativeSupportedFormat();
 	
 	return out;
 }
 
-std::vector<enum audio::format> audio::algo::drain::Equalizer::getNativeSupportedFormat() {
-	std::vector<enum audio::format> out;
-	out.push_back(audio::format_float);
+etk::Vector<enum audio::format> audio::algo::drain::Equalizer::getNativeSupportedFormat() {
+	etk::Vector<enum audio::format> out;
+	out.pushBack(audio::format_float);
 	return out;
 }
 
@@ -343,10 +343,10 @@ bool audio::algo::drain::Equalizer::addBiquad(int32_t _idChannel, audio::algo::d
 	return m_private->addBiquad(_idChannel, _type, _frequencyCut, _qualityFactor, _gain);
 }
 
-std::vector<std::pair<float,float> > audio::algo::drain::Equalizer::calculateTheory() {
+etk::Vector<etk::Pair<float,float> > audio::algo::drain::Equalizer::calculateTheory() {
 	if (m_private == nullptr) {
 		AA_DRAIN_ERROR("Equalizer does not init ...");
-		return std::vector<std::pair<float,float> >();
+		return etk::Vector<etk::Pair<float,float> >();
 	}
 	return m_private->calculateTheory();
 }
