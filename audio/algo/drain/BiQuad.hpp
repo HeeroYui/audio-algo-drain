@@ -63,8 +63,8 @@ namespace audio {
 							_qualityFactor = 0.01;
 						}
 						double norm;
-						double V = std::pow(10.0, std::abs(_gain) / 20.0);
-						double K = std::tan(M_PI * _frequencyCut / _sampleRate);
+						double V = std::pow(10.0, etk::abs(_gain) / 20.0);
+						double K = etk::tan(M_PI * _frequencyCut / _sampleRate);
 						switch (_type) {
 							case biQuadType_none:
 								m_a[0] = 1.0;
@@ -264,7 +264,7 @@ namespace audio {
 								w = std::exp(std::log(1.0 / 0.001) * iii / (len - 1.0)) * 0.001 * M_PI;
 							}
 							double freq = iii / (len - 1.0) * _sampleRate / 2.0;
-							double phi = std::pow(std::sin(w/2.0), 2.0);
+							double phi = std::pow(etk::sin(w/2.0), 2.0);
 							double y =   std::log(   std::pow((m_a[0]+m_a[1]+m_a[2]).getDouble(), 2.0)
 							                       - 4.0*((m_a[0]*m_a[1]).getDouble() + 4.0*(m_a[0]*m_a[2]).getDouble() + (m_a[1]*m_a[2]).getDouble())*phi
 							                       + 16.0*(m_a[0]*m_a[2]).getDouble()*phi*phi)
