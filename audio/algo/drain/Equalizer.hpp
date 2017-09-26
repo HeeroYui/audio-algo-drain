@@ -10,6 +10,7 @@
 #include <etk/Vector.hpp>
 #include <audio/format.hpp>
 #include <audio/algo/drain/BiQuadType.hpp>
+#include <etk/Pair.hpp>
 
 namespace audio {
 	namespace algo {

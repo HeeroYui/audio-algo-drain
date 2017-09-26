@@ -1,6 +1,9 @@
-#include <cstdio>
-#include <cmath>
-#include <cstdint>
+
+extern "C" {
+	#include <stdio.h>
+	#include <math.h>
+	#include <stdint.h>
+}
 // http://www.labbookpages.co.uk/audio/beamforming/delaySum.html
 // Number of angle points to calculate
 #define ANGLE_RESOLUTION 100000

@@ -8,7 +8,10 @@
 #include <ememory/memory.hpp>
 #include <etk/types.hpp>
 #include <audio/algo/drain/BiQuadType.hpp>
-#include <cmath>
+#include <etk/Pair.hpp>
+extern "C" {
+	#include <math.h>
+}
 #ifndef M_LN10
 	#define M_LN10 2.30258509299404568402
 #endif
@@ -63,7 +66,7 @@ namespace audio {
 							_qualityFactor = 0.01;
 						}
 						double norm;
-						double V = std::pow(10.0, etk::abs(_gain) / 20.0);
+						double V = etk::pow(10.0, etk::abs(_gain) / 20.0);
 						double K = etk::tan(M_PI * _frequencyCut / _sampleRate);
 						switch (_type) {
 							case biQuadType_none:
@@ -125,35 +128,35 @@ namespace audio {
 							case biQuadType_lowShelf:
 								if (_gain >= 0) {
 									norm = 1.0 / (1.0 + M_SQRT2 * K + K * K);
-									m_a[0] = (1.0 + std::sqrt(2.0*V) * K + V * K * K) * norm;
+									m_a[0] = (1.0 + etk::sqrt(2.0*V) * K + V * K * K) * norm;
 									m_a[1] = 2.0 * (V * K * K - 1.0) * norm;
-									m_a[2] = (1.0 - std::sqrt(2.0*V) * K + V * K * K) * norm;
+									m_a[2] = (1.0 - etk::sqrt(2.0*V) * K + V * K * K) * norm;
 									m_b[0] = 2.0 * (K * K - 1.0) * norm;
 									m_b[1] = (1.0 - M_SQRT2 * K + K * K) * norm;
 								} else {
-									norm = 1.0 / (1.0 + std::sqrt(2.0*V) * K + V * K * K);
+									norm = 1.0 / (1.0 + etk::sqrt(2.0*V) * K + V * K * K);
 									m_a[0] = (1.0 + M_SQRT2 * K + K * K) * norm;
 									m_a[1] = 2.0 * (K * K - 1.0) * norm;
 									m_a[2] = (1.0 - M_SQRT2 * K + K * K) * norm;
 									m_b[0] = 2.0 * (V * K * K - 1.0) * norm;
-									m_b[1] = (1.0 - std::sqrt(2.0*V) * K + V * K * K) * norm;
+									m_b[1] = (1.0 - etk::sqrt(2.0*V) * K + V * K * K) * norm;
 								}
 								break;
 							case biQuadType_highShelf:
 								if (_gain >= 0) {
 									norm = 1.0 / (1.0 + M_SQRT2 * K + K * K);
-									m_a[0] = (V + std::sqrt(2.0*V) * K + K * K) * norm;
+									m_a[0] = (V + etk::sqrt(2.0*V) * K + K * K) * norm;
 									m_a[1] = 2.0 * (K * K - V) * norm;
-									m_a[2] = (V - std::sqrt(2.0*V) * K + K * K) * norm;
+									m_a[2] = (V - etk::sqrt(2.0*V) * K + K * K) * norm;
 									m_b[0] = 2.0 * (K * K - 1.0) * norm;
 									m_b[1] = (1.0 - M_SQRT2 * K + K * K) * norm;
 								} else {
-									norm = 1.0 / (V + std::sqrt(2.0*V) * K + K * K);
+									norm = 1.0 / (V + etk::sqrt(2.0*V) * K + K * K);
 									m_a[0] = (1.0 + M_SQRT2 * K + K * K) * norm;
 									m_a[1] = 2.0 * (K * K - 1.0) * norm;
 									m_a[2] = (1.0 - M_SQRT2 * K + K * K) * norm;
 									m_b[0] = 2.0 * (K * K - V) * norm;
-									m_b[1] = (V - std::sqrt(2.0*V) * K + K * K) * norm;
+									m_b[1] = (V - etk::sqrt(2.0*V) * K + K * K) * norm;
 								}
 								break;
 						}
@@ -261,14 +264,14 @@ namespace audio {
 								w = iii / (len - 1.0) * M_PI;
 							} else {
 								// 0.001 to 1, times pi, log scale
-								w = std::exp(std::log(1.0 / 0.001) * iii / (len - 1.0)) * 0.001 * M_PI;
+								w = etk::exp(etk::log(1.0 / 0.001) * iii / (len - 1.0)) * 0.001 * M_PI;
 							}
 							double freq = iii / (len - 1.0) * _sampleRate / 2.0;
-							double phi = std::pow(etk::sin(w/2.0), 2.0);
-							double y =   std::log(   std::pow((m_a[0]+m_a[1]+m_a[2]).getDouble(), 2.0)
+							double phi = etk::pow(etk::sin(w/2.0), 2.0);
+							double y =   etk::log(   etk::pow((m_a[0]+m_a[1]+m_a[2]).getDouble(), 2.0)
 							                       - 4.0*((m_a[0]*m_a[1]).getDouble() + 4.0*(m_a[0]*m_a[2]).getDouble() + (m_a[1]*m_a[2]).getDouble())*phi
 							                       + 16.0*(m_a[0]*m_a[2]).getDouble()*phi*phi)
-							           - std::log(   std::pow(1.0+(m_b[0]+m_b[1]).getDouble(), 2.0)
+							           - etk::log(   etk::pow(1.0+(m_b[0]+m_b[1]).getDouble(), 2.0)
 							                       - 4.0*((m_b[0]).getDouble() + 4.0*(m_b[1]).getDouble() + (m_b[0]*m_b[1]).getDouble())*phi
 							                       + 16.0*m_b[1].getDouble()*phi*phi);
 							y = y * 10.0 / M_LN10;
