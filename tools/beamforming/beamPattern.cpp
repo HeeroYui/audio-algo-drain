@@ -13,7 +13,6 @@ extern "C" {
 #include <test-debug/debug.hpp>
 #include <etk/os/FSNode.hpp>
 #include <etk/math/Vector3D.hpp>
-#include <etk/math/Matrix4.hpp>
 
 const double speedSound = 340.29; // m/s
 
