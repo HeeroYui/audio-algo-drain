@@ -186,7 +186,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 		case audio::format_double:
 			{
 				m_private = ememory::makeShared<EqualizerPrivateType<audio::double_t> >();
-				if (m_private == nullptr) {
+				if (m_private == null) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
@@ -196,7 +196,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 		case audio::format_float:
 			{
 				m_private = ememory::makeShared<EqualizerPrivateType<audio::float_t> >();
-				if (m_private == nullptr) {
+				if (m_private == null) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
@@ -206,7 +206,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 		case audio::format_int8:
 			{
 				m_private = ememory::makeShared<EqualizerPrivateType<audio::int8_8_t> >();
-				if (m_private == nullptr) {
+				if (m_private == null) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
@@ -216,7 +216,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 		case audio::format_int8_on_int16:
 			{
 				m_private = ememory::makeShared<EqualizerPrivateType<audio::int8_16_t> >();
-				if (m_private == nullptr) {
+				if (m_private == null) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
@@ -226,7 +226,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 		case audio::format_int16:
 			{
 				m_private = ememory::makeShared<EqualizerPrivateType<audio::int16_16_t> >();
-				if (m_private == nullptr) {
+				if (m_private == null) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
@@ -236,7 +236,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 		case audio::format_int16_on_int32:
 			{
 				m_private = ememory::makeShared<EqualizerPrivateType<audio::int16_32_t> >();
-				if (m_private == nullptr) {
+				if (m_private == null) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
@@ -246,7 +246,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 		case audio::format_int24_on_int32:
 			{
 				m_private = ememory::makeShared<EqualizerPrivateType<audio::int24_32_t> >();
-				if (m_private == nullptr) {
+				if (m_private == null) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
@@ -256,7 +256,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 		case audio::format_int32:
 			{
 				m_private = ememory::makeShared<EqualizerPrivateType<audio::int32_32_t> >();
-				if (m_private == nullptr) {
+				if (m_private == null) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
@@ -266,7 +266,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 		case audio::format_int32_on_int64:
 			{
 				m_private = ememory::makeShared<EqualizerPrivateType<audio::int32_64_t> >();
-				if (m_private == nullptr) {
+				if (m_private == null) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
@@ -276,7 +276,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 		case audio::format_int64:
 			{
 				m_private = ememory::makeShared<EqualizerPrivateType<audio::int32_64_t> >();
-				if (m_private == nullptr) {
+				if (m_private == null) {
 					AA_DRAIN_ERROR("can not allocate private data...");
 					return;
 				}
@@ -286,7 +286,7 @@ void audio::algo::drain::Equalizer::init(float _sampleRate, int8_t _nbChannel, e
 	}
 }
 void audio::algo::drain::Equalizer::reset() {
-	if (m_private == nullptr) {
+	if (m_private == null) {
 		AA_DRAIN_ERROR("Equalizer does not init ...");
 		return;
 	}
@@ -306,7 +306,7 @@ etk::Vector<enum audio::format> audio::algo::drain::Equalizer::getNativeSupporte
 }
 
 void audio::algo::drain::Equalizer::process(void* _output, const void* _input, size_t _nbChunk) {
-	if (m_private == nullptr) {
+	if (m_private == null) {
 		AA_DRAIN_ERROR("Equalizer does not init ...");
 		return;
 	}
@@ -314,14 +314,14 @@ void audio::algo::drain::Equalizer::process(void* _output, const void* _input, s
 }
 
 bool audio::algo::drain::Equalizer::addBiquad(double _a0, double _a1, double _a2, double _b0, double _b1) {
-	if (m_private == nullptr) {
+	if (m_private == null) {
 		AA_DRAIN_ERROR("Equalizer does not init ...");
 		return false;
 	}
 	return m_private->addBiquad(_a0, _a1, _a2, _b0, _b1);
 }
 bool audio::algo::drain::Equalizer::addBiquad(int32_t _idChannel, double _a0, double _a1, double _a2, double _b0, double _b1) {
-	if (m_private == nullptr) {
+	if (m_private == null) {
 		AA_DRAIN_ERROR("Equalizer does not init ...");
 		return false;
 	}
@@ -329,14 +329,14 @@ bool audio::algo::drain::Equalizer::addBiquad(int32_t _idChannel, double _a0, do
 }
 
 bool audio::algo::drain::Equalizer::addBiquad(audio::algo::drain::biQuadType _type, double _frequencyCut, double _qualityFactor, double _gain) {
-	if (m_private == nullptr) {
+	if (m_private == null) {
 		AA_DRAIN_ERROR("Equalizer does not init ...");
 		return false;
 	}
 	return m_private->addBiquad(_type, _frequencyCut, _qualityFactor, _gain);
 }
 bool audio::algo::drain::Equalizer::addBiquad(int32_t _idChannel, audio::algo::drain::biQuadType _type, double _frequencyCut, double _qualityFactor, double _gain) {
-	if (m_private == nullptr) {
+	if (m_private == null) {
 		AA_DRAIN_ERROR("Equalizer does not init ...");
 		return false;
 	}
@@ -344,7 +344,7 @@ bool audio::algo::drain::Equalizer::addBiquad(int32_t _idChannel, audio::algo::d
 }
 
 etk::Vector<etk::Pair<float,float> > audio::algo::drain::Equalizer::calculateTheory() {
-	if (m_private == nullptr) {
+	if (m_private == null) {
 		AA_DRAIN_ERROR("Equalizer does not init ...");
 		return etk::Vector<etk::Pair<float,float> >();
 	}
