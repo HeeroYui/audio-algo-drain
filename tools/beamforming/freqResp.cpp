@@ -15,8 +15,8 @@ extern "C" {
 // gnuplot> call 'freqResp.gnuplot'
 
 #include <etk/etk.hpp>
+#include <etk/uri/uri.hpp>
 #include <test-debug/debug.hpp>
-#include <etk/os/FSNode.hpp>
 #include <etk/math/Vector3D.hpp>
 
 const double speedSound = 340.29; // m/s
@@ -154,8 +154,11 @@ const double distanceEar = 3;
 int main(int argc, const char *argv[]) {
 	etk::init(argc, argv);
 	TEST_INFO("start calculation");
-	etk::FSNode node("freqResp.dat");
-	node.fileOpenWrite();
+	ememory::SharedPtr<etk::io::Interface> fileIO = etk::uri::get(etk::Path("freqResp.dat"));
+	if (fileIO->open(etk::io::OpenMode::Write) == false) {
+		TEST_ERROR("Can not open file...");
+		return -1;
+	}
 	double basicApplyDelay[posCount];
 	for (int32_t iii=0; iii<posCount; iii++) {
 		basicApplyDelay[iii] = 0.0f;
@@ -186,10 +189,10 @@ int main(int argc, const char *argv[]) {
 			}
 			char ploppp[4096];
 			sprintf(ploppp, "%f %f %f\n", angle, freq, logOutput);
-			node.filePuts(ploppp);
+			fileIO->puts(ploppp);
 		}
-		node.filePuts("\n");
+		fileIO->puts("\n");
 	}
-	node.fileClose();
+	fileIO->close();
 	return 0;
 }

@@ -11,8 +11,8 @@ extern "C" {
 
 #include <etk/etk.hpp>
 #include <test-debug/debug.hpp>
-#include <etk/os/FSNode.hpp>
 #include <etk/math/Vector3D.hpp>
+#include <etk/uri/uri.hpp>
 
 const double speedSound = 340.29; // m/s
 
@@ -155,12 +155,12 @@ const double distanceEar = 3;
 int main(int argc, const char *argv[]) {
 	etk::init(argc, argv);
 	TEST_INFO("start calculation");
-	etk::FSNode node("beamPattern.dat");
-	node.fileOpenWrite();
-	
+	ememory::SharedPtr<etk::io::Interface> fileIO = etk::uri::get(etk::Path("beamPattern.dat"));
+	if (fileIO->open(etk::io::OpenMode::Write) == false) {
+		TEST_ERROR("Can not open file...");
+		return -1;
+	}
 	double freq = 3000.0; // Signal frequency in Hz 
-
-	
 	double basicApplyDelay[posCount];
 	for (int32_t iii=0; iii<posCount; iii++) {
 		basicApplyDelay[iii] = 0.0f;
@@ -189,9 +189,9 @@ int main(int argc, const char *argv[]) {
 		}
 		char ploppp[4096];
 		sprintf(ploppp, "%d %f %f %f %f\n", aaa, angle, angleRad, output, logOutput);
-		node.filePuts(ploppp);
+		fileIO->puts(ploppp);
 	}
-	node.fileClose();
+	fileIO->close();
 	return 0;
 }
 

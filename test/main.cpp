@@ -7,7 +7,6 @@
 #include <test-debug/debug.hpp>
 #include <etk/etk.hpp>
 #include <audio/algo/drain/Equalizer.hpp>
-#include <etk/os/FSNode.hpp>
 #include <echrono/echrono.hpp>
 #include <ethread/Thread.hpp>
 #include <ethread/tools.hpp>
